@@ -1,0 +1,11 @@
+train: ../Train_da/images/train # train images 
+val: ../Train_da/images/val # val images 
+test: # test images (optional)
+
+# Classes
+nc: 2 # number of classes
+names: ["person","car"] # class names
+
+
+# Download script/URL (optional)
+#download: https://ultralytics.com/assets/coco128.zip
