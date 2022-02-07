@@ -1,15 +1,17 @@
 # Car_Person:::[Documentation]
 
-1) Model Name :- YOLOv5 
+#1) Model Name :- YOLOv5 
    
-2) Links to dataset and framework :- https://evp-ml-data.s3.us-east-2.amazonaws.com/mlinterview/openimages-personcar/trainval.tar.gz ,
+#2) Links to dataset and framework :- 
+   https://evp-ml-data.s3.us-east-2.amazonaws.com/mlinterview/openimages-personcar/trainval.tar.gz ,
    https://pytorch.org/docs/stable/index.html
    
-3) About the Model :- YOLOv5 is a family of compound-scaled object detection models trained on the COCO dataset, 
+#3) About the Model :-
+   YOLOv5 is a family of compound-scaled object detection models trained on the COCO dataset, 
    and includes simple functionality for Test Time Augmentation (TTA), model ensembling, 
    hyperparameter evolution, and export to ONNX, CoreML and TFLite. Model.
    
-4) Primary Analysis :- 
+#4) Primary Analysis :- 
    The YOLO network consists of three main pieces.
     1) Backbone - A convolutional neural network that aggregates and forms image features at different granularities.
     2) Neck - A series of layers to mix and combine image features to pass them forward to prediction.
@@ -17,10 +19,12 @@
   
     YOLO model is fast and blazingly fast than the other models because In a YOLOv5 Colab notebook, running a Tesla P100, we saw inference times up to 0.007 seconds per image,         meaning 140 frames per second (FPS)! By contrast, YOLOv4 achieved 50 FPS after having been converted to the same Ultralytics PyTorch library.
     
-5) Assumptions :- Assumptions of yolov5 model requires labels in text format,it cannot take any other files except text file,but in this dataset the annotation are given in json    format.YOLOv5 is detect very fast in small objects and YOLO object detection is more than 1000x faster than R-CNN and 100x faster than Fast R-CNN. YOLO model is based on        regression,There is no need for us to train all the images for training purpose,we can give 25% images for predictions.Always try to best annotations for labeling,
+#5) Assumptions :-
+   Assumptions of yolov5 model requires labels in text format,it cannot take any other files except text file,but in this dataset the annotation are given in 
+   json  format.YOLOv5 is detect very fast in small objects and YOLO object detection is more than 1000x faster than R-CNN and 100x faster than Fast R-CNN. YOLO model is based      on  regression,There is no need for us to train all the images for training purpose,we can give 25% images for predictions.Always try to best annotations for labeling,
    because model will not be able to detect objects correctly when you did not annotation properly.  
 
-6) Inference :- 
+#6) Inference :- 
    What we need is a Deep Learning model that works on our testing data. So for test model on testing data  will have to use the “model = torch.hub.load('D:\DL
    Assignment\yolov5','custom', r'D:\DL Assignment\models\best.pt',source='local') ” script present at the location “main.py”. We are giving test images for prediction
    " img = r'D:\DL Assignment\test_images\15.jpg' " and the predicted images are located in predicted_images folder.
@@ -29,7 +33,8 @@
    img: image size which must be the same as training image size.
    Running the main.py file would create a folder “runs/detect/exp” which would have all the outcome images with detection.
    
- 7) Approach :- The given dataset contains annotation and images,but the annotation are in json format which is not supported by yolov5 model,I have taken all images for
+ #7) Approach :- 
+    The given dataset contains annotation and images,but the annotation are in json format which is not supported by yolov5 model,I have taken all images for
     annotate ,i used pylabel this will give annotations as well as we can see the annotate images,I applied pylabel importer on specific path of annoatation json file and
     path to images which is required for labeling.When i run this script "dataset = importer.ImportCoco(path_to_annotations, path_to_images=path_to_images, name="trainval")"
     it will give img_widh,img_height,bbox ,segmentation ,cat_name and so on. The PyLabel exporter will export all of the annotations in the dataframe to the desired target
@@ -52,12 +57,15 @@
     Running the main.py file would create a folder “runs/detect/exp” which would have all the outcome images with detection.
     We can see the predicted imaged of object detection "in run/detect/exp" folder.
     
-8) False positives :- In some image predictions a normal truck is detected as a car becuase truck tires and size of truck ,wheels are similar to car.Some times a baner images
+#8) False positives :- 
+   In some image predictions a normal truck is detected as a car becuase truck tires and size of truck ,wheels are similar to car.Some times a baner images
    are detecting like a person,so this things i had observed in false positives.
   
-9) Metrics :- Model Summary: 213 layers, 7015519 parameters, 0 gradients, 15.8 GFLOPs
+#9) Metrics :- 
+    Model Summary: 213 layers, 7015519 parameters, 0 gradients, 15.8 GFLOPs
 
-10) Conclusion :- The trained model will given accurate results,we can see in predicted images folder.I had learned lots of things with this project and also i faced lots of
-    errors while running Train_Test.py file.The main thing i got advantage from pylabel package for image annotations.From this project we can easily detect persons and car in
-    live video.
+#10) Conclusion :-
+     The trained model will given accurate results,we can see in predicted images folder.I had learned lots of things with this project and also i faced lots of
+     errors while running Train_Test.py file.The main thing i got advantage from pylabel package for image annotations.From this project we can easily detect persons and car in
+     live video.
     
